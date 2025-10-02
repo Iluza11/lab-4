@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список дел</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(rgba(0, 66, 221, 0.7), rgba(52, 255, 29, 0.7));
+            background-size: cover;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 550px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        #newtask {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        #newtask input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 16px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+        
+        #newtask input:focus {
+            outline: none;
+            border-color: rgba(56, 199, 9, 0.768);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(56, 199, 9, 0.1);
+        }
+        
+        #push {
+            width: 50px;
+            background-image: url(img/List/right1.svg);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        #push:hover {
+            transform: scale(1.1);
+            background:  rgba(56, 199, 9, 0.768);
+            background-image: url(img/List/right1.svg);
+        }
+        
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+        }
+        
+        .task:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(194, 0, 0, 0.064);
+        }
+        
+        .task span {
+            flex: 1;
+            font-size: 16px;
+            color: #000000;
+            font-weight: 500;
+        }
+        
+        .delete {
+            background-image: url(img/List/trash.svg);
+            border: none;
+            border-radius: 5px;
+            width: 25px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .delete:hover {
+            background-image: url(img/List/trash.svg);
+            transform: scale(1.20);
+        }
+        
+        .empty {
+            text-align: center;
+            color: #7f8c8d;
+            padding: 30px;
+            font-style: italic;
+        }
+        
+        .task-count {
+            text-align: center;
+            margin-top: 15px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Список задач:</h1>
+        <div id="newtask">
+            <input type="text" placeholder="Что нужно сделать сегодня?">
+            <button id="push"></button>
+        </div>
+        <div id="tasks">
+            <div class="empty">Ваши задачи:</div>
+        </div>
+        <div class="task-count">Всего: <span id="task-counter">0</span></div>
+    </div>
+
+    <script>
+        // Ждем полной загрузки DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            function updateTaskCount() {
+                const taskCount = document.querySelectorAll('.task').length;
+                const counterElement = document.getElementById('task-counter');
+                if (counterElement) {
+                    counterElement.textContent = taskCount;
+                }
+            }
+            
+            document.querySelector('#push').onclick = function() {
+                const input = document.querySelector('#newtask input');
+                const tasks = document.querySelector('#tasks');
+                
+                if(input.value.trim().length === 0){
+                    alert("Введите задачу!");
+                    return;
+                }
+                
+                // Убираем сообщение о пустом списке
+                const emptyMessage = tasks.querySelector('.empty');
+                if(emptyMessage){
+                    emptyMessage.remove();
+                }
+                
+                // Создаем новую задачу
+                const taskElement = document.createElement('div');
+                taskElement.className = 'task';
+                taskElement.innerHTML = `
+                    <span>${input.value}</span>
+                    <button class="delete"></button>
+                `;
+                
+                // Добавляем задачу в контейнер
+                tasks.appendChild(taskElement);
+                
+                // Очищаем поле ввода
+                input.value = '';
+                
+                // Обновляем счетчик
+                updateTaskCount();
+                
+                // Добавляем обработчик удаления для новой задачи
+                const deleteButton = taskElement.querySelector('.delete');
+                deleteButton.onclick = function() {
+                    this.parentElement.remove();
+                    updateTaskCount();
+                    
+                    // Если задач не осталось, показываем сообщение
+                    if(tasks.children.length === 0){
+                        const emptyDiv = document.createElement('div');
+                        emptyDiv.className = 'empty';
+                        emptyDiv.textContent = 'Добавьте свою первую задачу';
+                        tasks.appendChild(emptyDiv);
+                    }
+                };
+            }
+            
+            // Добавляем задачу по Enter
+            document.querySelector('#newtask input').addEventListener('keypress', function(e){
+                if(e.key === 'Enter'){
+                    document.querySelector('#push').click();
+                }
+            });
+            
+            // Инициализируем счетчик
+            updateTaskCount();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(rgba(0, 66, 221, 0.7), rgba(52, 255, 29, 0.7));
+            background-size: cover;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 550px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        #newtask {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        #newtask input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 16px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+        
+        #newtask input:focus {
+            outline: none;
+            border-color: rgba(56, 199, 9, 0.768);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(56, 199, 9, 0.768);
+        }
+        
+        #push {
+            width: 50px;
+            background-image: url(img/List/right1.svg);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        #push:hover {
+            transform: scale(1.25);
+        }
+        
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 50px;
+            margin-bottom: 10px;
+            border-left: 4px solid #cf0000;
+            transition: all 0.3s ease;
+        }
+        
+        .task:hover {
+            transform: translateX(5px);
+        }
+        
+        .task span {
+            flex: 1;
+            font-size: 16px;
+            color: #000000;
+            font-weight: 500;
+        }
+        
+        .delete {
+            background-image: url(img/List/trash.svg);
+            border: none;
+            border-radius: 10px;
+            width: 35px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .delete:hover {
+            background-image: #c0392b;
+            transform: scale(1.25);
+        }
+        
+        .empty {
+            text-align: center;
+            color: #000000;
+            padding: 30px;
+        }
+        

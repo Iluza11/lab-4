@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOOOPS!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #aa0505 20%, #0f005a 50%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1000px;
+            background: rgb(255, 255, 255);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .image-section {
+            flex: 1;
+             background: rgb(255, 255, 255);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #01125e, #66041e);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 120px;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .content-section {
+            flex: 1;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .error-code {
+            font-size: 100px;
+            font-weight: 800;
+            color: #bb0b0bd9;
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: #bf4000;
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #495057;
+            border: 2px solid #e9ecef;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary:hover {
+            background: #bf4000;
+        }
+        
+        .btn-secondary:hover {
+            background: #e9ecef;
+        }
+
+        .help-links {
+            margin-top: 25px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .help-link {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .help-link:hover {
+            color: #020d4d;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .image-section {
+                padding: 30px;
+            }
+            
+            .image-placeholder {
+                max-width: 200px;
+                height: 200px;
+                font-size: 80px;
+            }
+            
+            .content-section {
+                padding: 40px 30px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-section">
+            <div class="image-placeholder">
+                <img src="img/404/back.png" width="400px">
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="error-code">404</div>
+            
+            <h1>Упс! Страница не отвечает.</h1>
+            
+            <p>К сожалению страница недоступна в данный момент.</p>
+            
+            <p>Попробуйте обратиться лично в университет по адресу Республика Марий Эл, г. Йошкар-Ола, пл. Ленина, дом 3.</p>
+            <p>Приемная ректора: (8362) 45-53-44;</p>
+            <p>Отдел кадров: (8362) 68-68-11;</p>
+            <p>Бухгалтерия: (8362) 68-78-97.</p>
+            
+            <div class="buttons">
+                <a href="" class="btn btn-primary">
+                    На главную
+                </a>
+                <a href="" class="btn btn-secondary">
+                    Назад
+                </a>
+            </div>
+            
+            <div class="help-links">
+                <a href="" class="help-link">Помощь студентам</a>
+                <a href="" class="help-link">Частые вопросы</a>
+                <a href="" class="help-link">Сайт ПГТУ</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

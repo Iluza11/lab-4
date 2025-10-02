@@ -1,0 +1,60 @@
+<!DOCTYPE html> <html lang="ru"> 
+<head> 
+   <meta charset="utf-8"> 
+   <title>Доорожные знаки</title> 
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+    <style>
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip .ui-tooltip {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 5px;
+            z-index: 1;
+        }
+    </style>
+    <script>
+        $(function () {
+            $(document).tooltip({
+                items: "img",
+                content: function () {
+                    var $element = $(this);
+                    if ($element.is("img")) {
+                        return $element.data('hint');
+                    }
+                }
+            });
+        });
+    </script>
+</head> 
+<body> 
+  <figure>
+    <p><img class="tooltip" data-hint= "1.1. Железнодорожный переезд со шлагбаумом" src="img/signs/1.svg">
+        <img class="tooltip" data-hint="1.2. Железнодорожный переезд без шлагбаума" src="img/signs/2.svg">
+        <img class="tooltip" data-hint= "1.3.1. Однопутная железная дорога" src="img/signs/3.svg">
+        <img class="tooltip" data-hint= "1.3.2. Многопутная железная дорога" src="img/signs/4.svg">
+        <img class="tooltip" data-hint= "1.4.1. Приближение к железодорожному переезду" src="img/signs/5.svg"></p>
+    <p><img class="tooltip" data-hint= "1.5. Пересечение с траймвайными путями" src="img/signs/6.svg">
+        <img class="tooltip" data-hint= "1.6. Пересечение равнозначных дорог" src="img/signs/7.svg">
+        <img class="tooltip" data-hint= "1.7. Пересечение с круговым движением" src="img/signs/8.svg">
+        <img class="tooltip" data-hint= "1.8. Светофорное регулирование" src="img/signs/9.svg">
+        <img class="tooltip" data-hint= "1.9. Разводной мост" src="img/signs/10.svg"></p>
+    <p><img class="tooltip" data-hint= "1.10. Выезд на набережную" src="img/signs/11.svg">
+        <img class="tooltip" data-hint= "1.11.1. Опасный поворт" src="img/signs/12.svg">
+        <img class="tooltip" data-hint= "1.11.2. Опасный поворот" src="img/signs/13.svg">
+        <img class="tooltip" data-hint= "1.12.1. Опасные повороты" src="img/signs/14.svg">
+        <img class="tooltip" data-hint= "1.12.2. Опасные повороты" src="img/signs/15.svg"></p>
+    <p><img class="tooltip" data-hint= "1.13. Крутой спуск" src="img/signs/16.svg">
+        <img class="tooltip" data-hint= "1.14. Крутой подъем" src="img/signs/17.svg">
+        <img class="tooltip" data-hint= "1.15. Скользкая дорога" src="img/signs/18.svg">
+        <img class="tooltip" data-hint= "1.16. Неровная дорога" src="img/signs/19.svg">
+        <img class="tooltip" data-hint= "1.17. Искусственная неровность" src="img/signs/20.svg"></p>
+    
+  </figure>
+</body> 
+</html>
